@@ -41,7 +41,7 @@ def load_data(dataset):
     # Let use 'cora' dataset for an example:
     # features = [allx,tx], [tx] takes up row 1708 - 2707,
     # test_idx_reorder is a list of integers, denoted by 'tidx'. It consists of values from 1708 to 2707, 
-    # which means "the node feature stored here belongs to node idx".
+    # indicating "the node feature stored here belongs to node idx".
     # The below line returns the node features to their original owners.
     features[test_idx_reorder, :] = features[test_idx_range, :]
     
