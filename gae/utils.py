@@ -77,11 +77,14 @@ def mask_test_edges(adj):
     # TODO: Clean up.
 
     # Remove diagonal elements
+    # An illustration of the dia_matrix() method: https://blog.csdn.net/ChenglinBen/article/details/84424379
+    # An illustration of np.newaxis: https://stackoverflow.com/a/41267079/8652817
     adj = adj - sp.dia_matrix((adj.diagonal()[np.newaxis, :], [0]), shape=adj.shape)
     adj.eliminate_zeros()
     # Check that diag is zero:
     assert np.diag(adj.todense()).sum() == 0
 
+    # "triu" for triangular, upper
     adj_triu = sp.triu(adj)
     adj_tuple = sparse_to_tuple(adj_triu)
     edges = adj_tuple[0]
