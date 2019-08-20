@@ -27,7 +27,10 @@ class GraphConvolution(Module):
         output = torch.spmm(adj, support)
         output = self.act(output)
         return output
-
+    
+    # >>> gc = GraphConvolution(in_features=6, out_features=3)
+    # >>> print(gc)
+    # GraphConvolution (6 -> 3)
     def __repr__(self):
         return self.__class__.__name__ + ' (' \
                + str(self.in_features) + ' -> ' \
