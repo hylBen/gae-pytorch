@@ -101,6 +101,9 @@ def mask_test_edges(adj):
     train_edges = np.delete(edges, np.hstack([test_edge_idx, val_edge_idx]), axis=0)
 
     def ismember(a, b, tol=5):
+        # [:,None] = [;,np.newaxis]
+        # a = [i,j], b[;,None] = [[i1,j1],[i2,j2],...,[in,jn]], suppose [i,j] = [i1,j1], then
+        # the below line outputs [True, False, ..., False]
         rows_close = np.all(np.round(a - b[:, None], tol) == 0, axis=-1)
         return np.any(rows_close)
 
